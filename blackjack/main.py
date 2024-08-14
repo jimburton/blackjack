@@ -12,8 +12,8 @@ root.iconbitmap('assets/cards.ico')
 root.geometry("900x500")
 root.configure(background="green")
 
-# Resize Cards
-def resize_cards(card):
+def resize_card(card):
+	""" Resize Cards."""
 	# Open the image
 	our_card_img = Image.open(card)
 
@@ -27,12 +27,12 @@ def resize_cards(card):
 	# Return that card
 	return our_card_image
 
-# Shuffle The Cards
 def shuffle():
+	""" Shuffle The Cards."""
+
 	# Define Our Deck
 	suits = ["diamonds", "clubs", "hearts", "spades"]
-	values = range(2, 15)
-	# 11 = Jack, 12=Queen, 13=King, 14 = Ace
+	values = range(2, 15) # 11 = Jack, 12=Queen, 13=King, 14 = Ace
 
 	global deck
 	deck =[]
@@ -54,7 +54,7 @@ def shuffle():
 	dealer.append(card)
 	# Output Card To Screen
 	global dealer_image
-	dealer_image = resize_cards(f'assets/cards/{card}.png')
+	dealer_image = resize_card(f'assets/cards/{card}.png')
 	dealer_label.config(image=dealer_image)
 
 	# Grab a random Card For Player
@@ -65,17 +65,14 @@ def shuffle():
 	player.append(card)
 	# Output Card To Screen
 	global player_image
-	player_image = resize_cards(f'assets/cards/{card}.png')
+	player_image = resize_card(f'assets/cards/{card}.png')
 	player_label.config(image=player_image)
-
-	#player_label.config(text=card)
 
 	# Put number of remaining cards in title bar
 	root.title(f'{len(deck)} Cards Left')
 
-
-# Deal Out Cards
 def deal_cards():
+	"""Deal Out Cards."""
 	try:
 		# Get the dealer Card
 		card = random.choice(deck)
@@ -85,9 +82,8 @@ def deal_cards():
 		dealer.append(card)
 		# Output Card To Screen
 		global dealer_image
-		dealer_image = resize_cards(f'assets/cards/{card}.png')
+		dealer_image = resize_card(f'assets/cards/{card}.png')
 		dealer_label.config(image=dealer_image)
-		#dealer_label.config(text=card)
 
 		# Get the player Card
 		card = random.choice(deck)
@@ -97,10 +93,8 @@ def deal_cards():
 		player.append(card)
 		# Output Card To Screen
 		global player_image
-		player_image = resize_cards(f'assets/cards/{card}.png')
+		player_image = resize_card(f'assets/cards/{card}.png')
 		player_label.config(image=player_image)
-		#player_label.config(text=card)
-
 
 		# Put number of remaining cards in title bar
 		root.title(f'{len(deck)} Cards Left')
@@ -109,7 +103,7 @@ def deal_cards():
 		root.title(f'No Cards In Deck')
 
 def setup():
-	# Set up ad display the GUI
+	""" Set up and display the GUI."""
 	my_frame = Frame(root, bg="green")
 	my_frame.pack(pady=20)
 
