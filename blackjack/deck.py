@@ -129,7 +129,7 @@ player_label = Label(player_frame, text='')
 player_label.pack(pady=20)
 
 
-# Create a couple buttons
+# Create a couple of buttons
 shuffle_button = Button(root, text="Shuffle Deck", font=("Helvetica", 14), command=shuffle)
 shuffle_button.pack(pady=20)
 
